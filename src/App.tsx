@@ -1,22 +1,37 @@
 import 'bulma/css/bulma.css';
 import 'bulma/css/bulma.css';
 import * as React from 'react';
-import CmdInput from './components/CmdInput/CmdInput';
+import CmdForm from './components/CmdForm/CmdForm';
 
 class App extends React.Component {
   public render() {
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title">
-            Hello World
-          </h1>
-          <p className="subtitle">
-            My first website with <strong>Bulma</strong>!
-            <CmdInput />
-          </p>
-        </div>
-      </section>
+      <div>
+        <section className="hero is-primary">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title">
+                HipChat Command Tester
+              </h1>
+              <h2 className="subtitle">
+                LebkuchenFM
+              </h2>
+              <CmdForm />
+            </div>
+          </div>
+        </section>
+        <section className="section">
+          <div className="container">
+            <h1 className="title">
+              Example commands
+            </h1>
+            <p className="subtitle">
+              #TODO
+            </p>
+          </div>
+        </section>
+      </div>
+
     );
   }
 }

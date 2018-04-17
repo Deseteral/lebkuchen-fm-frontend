@@ -2,8 +2,8 @@ import * as React from "react";
 
 function CmdInput() {
   return (
-    <div>
-      <input type="text" />
+    <div className="field">
+      <input type="text" className="input" placeholder="Enter command..." />
     </div>
   );
 }
