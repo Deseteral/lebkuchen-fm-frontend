@@ -1,38 +1,42 @@
 import 'bulma/css/bulma.css';
 import 'bulma/css/bulma.css';
 import * as React from 'react';
-import CmdForm from './components/CmdForm/CmdForm';
+import CmdFormSection from './components/CmdForm/CmdFormSection';
+import Header from './components/Header/Header';
+import YoutubePlayer from './components/YoutubePlayer/YoutubePlayer';
+
+interface IAppState {
+  displaySendMsg: boolean
+}
 
 class App extends React.Component {
+  public state: IAppState;
+
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      displaySendMsg: false,
+    };
+    this.toggleSendMsgForm = this.toggleSendMsgForm.bind(this);
+  }
+
   public render() {
     return (
       <div>
-        <section className="hero is-primary">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title">
-                HipChat Command Tester
-              </h1>
-              <h2 className="subtitle">
-                LebkuchenFM
-              </h2>
-              <CmdForm />
-            </div>
+        <Header title="" />
+        <YoutubePlayer />
+        <div>
+          <div className="section container">
+            <button className="button" onClick={this.toggleSendMsgForm}>Toggle message form</button>
           </div>
-        </section>
-        <section className="section">
-          <div className="container">
-            <h1 className="title">
-              Example commands
-            </h1>
-            <p className="subtitle">
-              #TODO
-            </p>
-          </div>
-        </section>
+          { this.state.displaySendMsg ? <CmdFormSection /> : null }
+        </div>
       </div>
-
     );
+  }
+
+  private toggleSendMsgForm() {
+    this.setState({ displaySendMsg: !this.state.displaySendMsg });
   }
 }
 
