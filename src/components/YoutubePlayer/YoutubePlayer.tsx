@@ -10,6 +10,7 @@ class YoutubePlayer extends React.Component {
   public render() {
     return(
       <div className="player-container">
+        <div className="overlay"/>
         <div id="yt-player" />
       </div>
     );
