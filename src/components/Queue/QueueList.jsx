@@ -1,12 +1,21 @@
 import * as React from 'react';
 
 function QueueList({ queue }) {
+  const verticalQueue = queue.slice(0, 9);
+  const horizontalQueue = queue.slice(9, 17);
   console.log(queue); // tslint:disable-line
   return (
-    <div className="queue-container">
-      <ul className="queue">
-        {queue.map(printTitle)}
-      </ul>
+    <div>
+      <div className="queue-container">
+        <ul className="queue">
+          {verticalQueue.map(printTitle)}
+        </ul>
+      </div>
+      <div className="dashboard-container">
+        <ul className="queue">
+          {horizontalQueue.map(printTitle)}
+        </ul>
+      </div>
     </div>
   );
 }
