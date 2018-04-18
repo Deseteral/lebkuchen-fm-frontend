@@ -9,7 +9,7 @@ class YoutubePlayer extends React.Component {
 
   public render() {
     return(
-      <div className="section">
+      <div className="player-container">
         <div id="yt-player" />
       </div>
     );
