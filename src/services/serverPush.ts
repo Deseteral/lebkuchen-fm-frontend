@@ -1,5 +1,6 @@
 import * as io from 'socket.io-client';
 import youtubeQueue from './queue/youtubeQueue';
+import synthesis from './synthesis';
 
 interface IIcomingMsg {
   action: string,
@@ -14,6 +15,10 @@ interface ISong {
   timesPlayed: number;
 }
 
+interface ISayMessage {
+  text: string;
+}
+
 let socket;
 
 function handleIncomingMsg(msg: IIcomingMsg) {
@@ -24,10 +29,15 @@ function handleIncomingMsg(msg: IIcomingMsg) {
   }
 }
 
+function handleSay(message: ISayMessage) {
+  synthesis.speechApiSay(message.text);
+}
+
 function initSocket() {
   socket = io();
   socket.on('connect', ()=> console.log('SOCKET CONNECTED!')); // tslint:disable-line
   socket.on('queue', handleIncomingMsg);
+  socket.on('say', handleSay);
   return socket;
 }
 
