@@ -21,6 +21,11 @@ app.get('/play', function(req, res) {
   res.send('ok');
 })
 
+app.get('/skip', function(req, res) {
+  io.sockets.emit('skip',{})
+  res.send('ok');
+})
+
 app.get('/bg', function(req, res) {
   io.sockets.emit('queue', {
     action: 'ADD',
