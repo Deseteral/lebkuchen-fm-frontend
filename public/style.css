@@ -245,3 +245,8 @@ body {
     width: 385px;
   }
 }
+
+iframe {
+  height: 100%;
+  width: 100%;
+}

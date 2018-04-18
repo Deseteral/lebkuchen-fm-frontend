@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import NowPlaying from './components/NowPlaying/NowPlaying';
 import Queue from './components/Queue/Queue';
 import YoutubePlayer from './components/YoutubePlayer/YoutubePlayer';
 
@@ -12,12 +13,9 @@ class App extends React.Component {
             <p className="logo-text">LebkuchenFM</p>
           </div>
         </div>
-        <div className="status-container">
-          <div className="status">
-            <span className="dimmed">now playing </span>Progidy - VooDoo People <span className="dimmed">now playing </span>
-          </div>
-        </div>
+
         <YoutubePlayer />
+        <NowPlaying />
         <Queue />
 
         <div className="footer-container">
