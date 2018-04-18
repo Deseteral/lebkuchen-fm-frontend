@@ -2,6 +2,8 @@ import * as React from "react";
 import * as YouTubePlayer from 'youtube-player';
 import  youtubeQueue from '../../services/queue/youtubeQueue';
 
+const YT_ENDED = 0;
+const YT_CUED = 5;
 
 class YoutubePlayer extends React.Component {
   private player: any;
@@ -12,8 +14,13 @@ class YoutubePlayer extends React.Component {
 
   public componentDidMount() {
     this.player = YouTubePlayer('yt-player');
-    youtubeQueue.setOnAddListener(()=>{
-      this.playNextVideo();
+    this.initPlayerListener();
+    youtubeQueue.setOnAddListener(() => {
+      this.player.getPlayerState().then((playerState)=> {
+        if ([YT_ENDED, YT_CUED].indexOf(playerState) >= 0) {
+          this.playNextVideo();
+        }
+      });
     })
   }
 
@@ -35,6 +42,14 @@ class YoutubePlayer extends React.Component {
         <div id="yt-player" />
       </div>
     );
+  }
+
+  private initPlayerListener() {
+    this.player.on('stateChange', (event) => {
+      if (event.data === YT_ENDED) {
+        this.playNextVideo();
+      }
+  });
   }
 }
 
