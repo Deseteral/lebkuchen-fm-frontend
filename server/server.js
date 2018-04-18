@@ -15,6 +15,7 @@ app.get('/play', function(req, res) {
     action: 'ADD',
     song: {
       youtubeId: 'a1Y73sPHKxw',
+      name: 'Dramatic chipmunk'
     }
   })
   res.send('ok');

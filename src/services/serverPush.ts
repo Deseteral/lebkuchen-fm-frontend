@@ -30,7 +30,7 @@ function handleIncomingMsg(msg: IIcomingMsg) {
   console.log('incoming message'); // tslint:disable-line
   console.log(msg); // tslint:disable-line
   if (msg.action === 'ADD' && msg.song) {
-    youtubeQueue.add({ id: msg.song.youtubeId});
+    youtubeQueue.add(msg.song);
   }
 }
 
@@ -44,7 +44,7 @@ function handleX(xsound: IXMessage) {
 }
 
 function initSocket(url='http://localhost:8000') {
-  socket = io();
+  socket = io(url);
   socket.on('connect', ()=> console.log('SOCKET CONNECTED!')); // tslint:disable-line
   socket.on('queue', handleIncomingMsg);
   socket.on('say', handleSay);

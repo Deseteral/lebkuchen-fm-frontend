@@ -14,7 +14,7 @@ function playNextVideo() {
 }
 
 function playYoutubeVideo(youtubeVideo) {
-  player.loadVideoById(youtubeVideo.id);
+  player.loadVideoById(youtubeVideo.youtubeId);
   player.playVideo();
 }
 
